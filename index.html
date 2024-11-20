@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LynnnMenu - Download</title>
+</head>
+<body>
+    <h1>LynnnMenu Download</h1>
+    <p>Current Version: <span id="version"></span></p>
+    <p>
+        <a id="download-link" href="" download="YimMenu.dll">Download LynnnMenu.dll</a>
+    </p>
+
+    <script>
+        fetch('version.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('version').textContent = data.version;
+            document.getElementById('download-link').href = data.dll_url;
+        })
+        .catch(error => console.error('Error fetching version:', error));
+    </script>
+</body>
+</html>
